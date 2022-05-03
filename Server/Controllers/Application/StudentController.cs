@@ -38,7 +38,7 @@ namespace SWARM.Server.Controllers.Application
                 _context.Students.Remove(itmStu);
                 _context.SaveChanges();
                 await trans.CommitAsync();
-                return Ok();
+                return Ok("Success");
             }
             catch (Exception ex)
             {
@@ -102,8 +102,7 @@ namespace SWARM.Server.Controllers.Application
                 _context.Students.Add(_stu);
                 await _context.SaveChangesAsync();
                 trans.Commit();
-
-                return Ok();
+                return Ok("Success");
             }
             catch (Exception ex)
             {
@@ -137,11 +136,11 @@ namespace SWARM.Server.Controllers.Application
                     _context.Students.Update(_stu);
                     await _context.SaveChangesAsync();
                     trans.Commit();
-                    return Ok();
+                    return Ok("Success");
                 }
                 _context.Database.CloseConnection();
                 await this.Post(_Item);
-                return Ok();
+                return Ok("Success");
             }
             catch (Exception ex)
             {

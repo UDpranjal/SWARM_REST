@@ -31,7 +31,7 @@ namespace SWARM.Server.Controllers.Application
                 _context.Zipcodes.Remove(itmZip);
                 _context.SaveChanges();
                 await trans.CommitAsync();
-                return Ok();
+                return Ok("Success");
             }
             catch (Exception ex)
             {
@@ -90,8 +90,7 @@ namespace SWARM.Server.Controllers.Application
                 _context.Zipcodes.Add(_zip);
                 await _context.SaveChangesAsync();
                 trans.Commit();
-
-                return Ok();
+                return Ok("Success");
             }
             catch (Exception ex)
             {
@@ -119,11 +118,11 @@ namespace SWARM.Server.Controllers.Application
                     _context.Zipcodes.Update(_zip);
                     await _context.SaveChangesAsync();
                     trans.Commit();
-                    return Ok();
+                    return Ok("Success");
                 }
                 _context.Database.CloseConnection();
                 await this.Post(_Item);
-                return Ok();
+                return Ok("Success");
             }
             catch (Exception ex)
             {

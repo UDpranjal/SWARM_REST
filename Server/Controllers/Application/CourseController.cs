@@ -73,7 +73,7 @@ namespace SWARM.Server.Controllers.Application
                 _context.Courses.Remove(itmCourse);
                 _context.SaveChanges();
                 await trans.CommitAsync();
-                return Ok();
+                return Ok("Success");
             }
             catch (Exception ex)
             {
@@ -106,7 +106,7 @@ namespace SWARM.Server.Controllers.Application
                 await _context.SaveChangesAsync();
                 trans.Commit();
 
-                return Ok();
+                return Ok("Success");
             }
             catch (Exception ex)
             {
@@ -133,11 +133,11 @@ namespace SWARM.Server.Controllers.Application
                     _context.Courses.Update(_crse);
                     await _context.SaveChangesAsync();
                     trans.Commit();
-                    return Ok();
+                    return Ok("Success");
                 }
                 _context.Database.CloseConnection();
                 await this.Post(_Item);
-                return Ok();
+                return Ok("Success");
             }
             catch (Exception ex)
             {

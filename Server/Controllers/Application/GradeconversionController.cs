@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 
 namespace SWARM.Server.Controllers.Application
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class GradeconversionController : BaseController, iBaseController<GradeConversion>
     {
         public GradeconversionController(SWARMOracleContext context, IHttpContextAccessor httpContextAccessor) : base(context, httpContextAccessor)
@@ -36,7 +38,7 @@ namespace SWARM.Server.Controllers.Application
                 _context.GradeConversions.Remove(itmGc);
                 _context.SaveChanges();
                 await trans.CommitAsync();
-                return Ok();
+                return Ok("Success");
             }
             catch (Exception ex)
             {
@@ -94,7 +96,7 @@ namespace SWARM.Server.Controllers.Application
                 _context.GradeConversions.Add(_gc);
                 await _context.SaveChangesAsync();
                 trans.Commit();
-                return Ok();
+                return Ok("Success");
             }
             catch (Exception ex)
             {
@@ -123,12 +125,12 @@ namespace SWARM.Server.Controllers.Application
                     _context.GradeConversions.Update(_gc);
                     await _context.SaveChangesAsync();
                     trans.Commit();
-                    return Ok();
+                    return Ok("Success");
                 }
 
                 _context.Database.CloseConnection();
                 await this.Post(_Item);
-                return Ok();
+                return Ok("Success");
             }
             catch (Exception ex)
             {

@@ -39,7 +39,7 @@ namespace SWARM.Server.Controllers.Application
                 _context.GradeTypeWeights.Remove(itmGtw);
                 _context.SaveChanges();
                 await trans.CommitAsync();
-                return Ok();
+                return Ok("Success");
             }
             catch (Exception ex)
             {
@@ -99,8 +99,7 @@ namespace SWARM.Server.Controllers.Application
                 _context.GradeTypeWeights.Add(_gtw);
                 await _context.SaveChangesAsync();
                 trans.Commit();
-
-                return Ok();
+                return Ok("Success");
             }
             catch (Exception ex)
             {
@@ -129,12 +128,11 @@ namespace SWARM.Server.Controllers.Application
                     _context.GradeTypeWeights.Update(_gtw);
                     await _context.SaveChangesAsync();
                     trans.Commit();
-
-                    return Ok();
+                    return Ok("Success");
                 }
                 _context.Database.CloseConnection();
                 await this.Post(_Item);
-                return Ok();
+                return Ok("Success");
 
             }
             catch (Exception ex)
